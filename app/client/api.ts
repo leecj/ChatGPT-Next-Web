@@ -62,7 +62,6 @@ export function getHeaders() {
   const accessStore = useAccessStore.getState();
   let headers: Record<string, string> = {
     "Content-Type": "application/json",
-    "x-requested-with": "XMLHttpRequest",
   };
 
   const makeBearer = (token: string) => `Bearer ${token.trim()}`;
@@ -78,6 +77,12 @@ export function getHeaders() {
     headers.Authorization = makeBearer(
       ACCESS_CODE_PREFIX + accessStore.accessCode,
     );
+  }
+
+  if (accessStore.enableAOAI && validString(accessStore.aoaiToken)) {
+    headers["azure-api-key"] = accessStore.aoaiToken;
+    headers["azure-domain-name"] = accessStore.azureDomainName;
+    headers["azure-deployment-name"] = accessStore.azureDeployName;
   }
 
   return headers;

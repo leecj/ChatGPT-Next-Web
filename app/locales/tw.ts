@@ -69,6 +69,19 @@ const tw: LocaleType = {
     Lang: {
       Name: "Language", // ATTENTION: if you wanna add a new translation, please do not translate this value, leave it as `Language`
       All: "所有语言",
+      Options: {
+        cn: "简体中文",
+        en: "English",
+        tw: "繁體中文",
+        es: "Español",
+        it: "Italiano",
+        tr: "Türkçe",
+        jp: "日本語",
+        de: "Deutsch",
+        vi: "Tiếng Việt",
+        ru: "Русский",
+        cs: "Čeština",
+      },
     },
     Avatar: "大頭貼",
     FontSize: {
@@ -124,6 +137,20 @@ const tw: LocaleType = {
       Title: "API Key",
       SubTitle: "使用自己的 Key 可規避授權存取限制",
       Placeholder: "OpenAI API Key",
+    },
+    EnableAOAI: "啟用 Azure OpenAI",
+    AzureDomainName: {
+      Title: "Azure OpenAI 自定義子域名",
+      Placeholder: "自定義子域名",
+    },
+    AzureDeploymentName: {
+      Title: "Azure OpenAI 部署實例名稱",
+      SubTitle: "啟用Azure OpenAI後, 輸入部署的實例名稱",
+      Placeholder: "實例名稱",
+    },
+    AOAIToken: {
+      Title: "Azure OpenAI API Key",
+      Placeholder: "Azure OpenAI API Key",
     },
     Usage: {
       Title: "帳戶餘額",

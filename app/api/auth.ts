@@ -2,7 +2,8 @@ import { NextRequest } from "next/server";
 import { getServerSideConfig } from "../config/server";
 import md5 from "spark-md5";
 import { ACCESS_CODE_PREFIX } from "../constant";
-import { OPENAI_URL } from "./common";
+
+const serverConfig = getServerSideConfig();
 
 function getIP(req: NextRequest) {
   let ip = req.ip ?? req.headers.get("x-real-ip");
@@ -27,13 +28,19 @@ function parseApiKey(bearToken: string) {
 
 export function auth(req: NextRequest) {
   const authToken = req.headers.get("Authorization") ?? "";
+  const aoaiApiKey = req.headers.get("azure-api-key") ?? "";
+
+  if (!!aoaiApiKey) {
+    return {
+      error: false,
+    };
+  }
 
   // check if it is openai api key or user token
   const { accessCode, apiKey: token } = parseApiKey(authToken);
 
   const hashedCode = md5.hash(accessCode ?? "").trim();
 
-  const serverConfig = getServerSideConfig();
   console.log("[Auth] allowed hashed codes: ", [...serverConfig.codes]);
   console.log("[Auth] got access code:", accessCode);
   console.log("[Auth] hashed access code:", hashedCode);
@@ -55,6 +62,10 @@ export function auth(req: NextRequest) {
       req.headers.set("Authorization", `Bearer ${apiKey}`);
     } else {
       console.log("[Auth] admin did not provide an api key");
+      return {
+        error: true,
+        msg: "admin did not provide an api key",
+      };
     }
   } else {
     console.log("[Auth] use user api key");

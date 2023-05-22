@@ -71,6 +71,19 @@ const tr: LocaleType = {
     Lang: {
       Name: "Language", // ATTENTION: if you wanna add a new translation, please do not translate this value, leave it as `Language`
       All: "Tüm Diller",
+      Options: {
+        cn: "简体中文",
+        en: "English",
+        tw: "繁體中文",
+        es: "Español",
+        it: "Italiano",
+        tr: "Türkçe",
+        jp: "日本語",
+        de: "Deutsch",
+        vi: "Tiếng Việt",
+        ru: "Русский",
+        cs: "Čeština",
+      },
     },
     Avatar: "Avatar",
     FontSize: {
@@ -127,6 +140,21 @@ const tr: LocaleType = {
       Title: "API Anahtarı",
       SubTitle: "Erişim kodu sınırını yoksaymak için anahtarınızı kullanın",
       Placeholder: "OpenAI API Anahtarı",
+    },
+    EnableAOAI: "Azure OpenAI Kullanın",
+    AzureDomainName: {
+      Title: "Azure OpenAI özel alt etki alanı",
+      Placeholder: "özel alt etki alanı",
+    },
+    AzureDeploymentName: {
+      Title: "Azure OpenAI dağıtım örneği adı",
+      SubTitle:
+        "Azure OpenAI'yi etkinleştirdikten sonra dağıtılan örnek adını girin",
+      Placeholder: "Örnek Adı",
+    },
+    AOAIToken: {
+      Title: "Azure OpenAI API Key",
+      Placeholder: "Azure OpenAI API Key",
     },
     Usage: {
       Title: "Hesap Bakiyesi",

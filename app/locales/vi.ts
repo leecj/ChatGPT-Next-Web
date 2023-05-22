@@ -71,6 +71,19 @@ const vi: LocaleType = {
     Lang: {
       Name: "Language", // ATTENTION: if you wanna add a new translation, please do not translate this value, leave it as `Language`
       All: "Tất cả ngôn ngữ",
+      Options: {
+        cn: "简体中文",
+        en: "English",
+        tw: "繁體中文",
+        es: "Español",
+        it: "Italiano",
+        tr: "Türkçe",
+        jp: "日本語",
+        de: "Deutsch",
+        vi: "Tiếng Việt",
+        ru: "Русский",
+        cs: "Čeština",
+      },
     },
     Avatar: "Ảnh đại diện",
     FontSize: {
@@ -126,6 +139,22 @@ const vi: LocaleType = {
       Title: "API Key",
       SubTitle: "Sử dụng khóa của bạn để bỏ qua giới hạn mã truy cập",
       Placeholder: "OpenAI API Key",
+    },
+
+    EnableAOAI: "Sử dụng Azure OpenAI",
+    AzureDomainName: {
+      Title: "Tên miền phụ tùy chỉnh Azure OpenAI",
+      Placeholder: "tên miền phụ tùy chỉnh",
+    },
+    AzureDeploymentName: {
+      Title: "Tên phiên bản triển khai Azure OpenAI",
+      SubTitle:
+        "Sau khi bật Azure OpenAI, hãy nhập tên phiên bản đã triển khai",
+      Placeholder: "tên ví dụ",
+    },
+    AOAIToken: {
+      Title: "Khóa API Azure OpenAI",
+      Placeholder: "Khóa API Azure OpenAI",
     },
     Usage: {
       Title: "Hạn mức tài khoản",

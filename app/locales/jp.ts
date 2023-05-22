@@ -71,6 +71,19 @@ const jp: LocaleType = {
     Lang: {
       Name: "Language", // ATTENTION: if you wanna add a new translation, please do not translate this value, leave it as `Language`
       All: "所有语言",
+      Options: {
+        cn: "简体中文",
+        en: "English",
+        tw: "繁體中文",
+        es: "Español",
+        it: "Italiano",
+        tr: "Türkçe",
+        jp: "日本語",
+        de: "Deutsch",
+        vi: "Tiếng Việt",
+        ru: "Русский",
+        cs: "Čeština",
+      },
     },
     Avatar: "アバター",
     FontSize: {
@@ -129,6 +142,21 @@ const jp: LocaleType = {
       Title: "APIキー",
       SubTitle: "自分のキーを使用してパスワードアクセス制限を迂回する",
       Placeholder: "OpenAI APIキー",
+    },
+    EnableAOAI: "Azure OpenAI を使用する",
+    AzureDomainName: {
+      Title: "Azure OpenAI カスタム サブドメイン",
+      Placeholder: "カスタム サブドメイン",
+    },
+    AzureDeploymentName: {
+      Title: "Azure OpenAI 展開インスタンス名",
+      SubTitle:
+        "Azure OpenAI を有効にした後、デプロイされたインスタンス名を入力してください",
+      Placeholder: "インスタンス名",
+    },
+    AOAIToken: {
+      Title: "Azure OpenAI API Key",
+      Placeholder: "Azure OpenAI API Key",
     },
     Usage: {
       Title: "残高照会",

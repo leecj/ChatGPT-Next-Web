@@ -71,6 +71,19 @@ const cs: LocaleType = {
     Lang: {
       Name: "Language", // ATTENTION: if you wanna add a new translation, please do not translate this value, leave it as `Language`
       All: "Všechny jazyky",
+      Options: {
+        cn: "简体中文",
+        en: "English",
+        tw: "繁體中文",
+        es: "Español",
+        it: "Italiano",
+        tr: "Türkçe",
+        jp: "日本語",
+        de: "Deutsch",
+        vi: "Tiếng Việt",
+        ru: "Русский",
+        cs: "Čeština",
+      },
     },
     Avatar: "Avatar",
     FontSize: {
@@ -128,6 +141,22 @@ const cs: LocaleType = {
       SubTitle: "Použitím klíče ignorujete omezení přístupového kódu",
       Placeholder: "Klíč API OpenAI",
     },
+
+    EnableAOAI: "Use Azure OpenAI",
+    AzureDomainName: {
+      Title: "Azure OpenAI custom subdomain",
+      Placeholder: "custom subdomain",
+    },
+    AzureDeploymentName: {
+      Title: "Azure OpenAI deployment instance name",
+      SubTitle: "After enabling Azure OpenAI, enter the deployed instance name",
+      Placeholder: "instance name",
+    },
+    AOAIToken: {
+      Title: "Azure OpenAI API Key",
+      Placeholder: "Azure OpenAI API Key",
+    },
+
     Usage: {
       Title: "Stav účtu",
       SubTitle(used: any, total: any) {

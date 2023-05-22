@@ -72,6 +72,19 @@ const de: LocaleType = {
     Lang: {
       Name: "Language", // ATTENTION: if you wanna add a new translation, please do not translate this value, leave it as `Language`
       All: "Alle Sprachen",
+      Options: {
+        cn: "简体中文",
+        en: "English",
+        tw: "繁體中文",
+        es: "Español",
+        it: "Italiano",
+        tr: "Türkçe",
+        jp: "日本語",
+        de: "Deutsch",
+        vi: "Tiếng Việt",
+        ru: "Русский",
+        cs: "Čeština",
+      },
     },
     Avatar: "Avatar",
     FontSize: {
@@ -129,6 +142,21 @@ const de: LocaleType = {
       SubTitle:
         "Verwenden Sie Ihren Schlüssel, um das Zugangscode-Limit zu ignorieren",
       Placeholder: "OpenAI API-Schlüssel",
+    },
+    EnableAOAI: "Verwenden von Azure OpenAI",
+    AzureDomainName: {
+      Title: "Benutzerdefinierte Azure OpenAI-Unterdomäne",
+      Placeholder: "benutzerdefinierte Subdomain",
+    },
+    AzureDeploymentName: {
+      Title: "Name der Azure OpenAI-Bereitstellungsinstanz",
+      SubTitle:
+        "Geben Sie nach dem Aktivieren von Azure OpenAI den Namen der bereitgestellten Instanz ein",
+      Placeholder: "Instanzname",
+    },
+    AOAIToken: {
+      Title: "Azure OpenAI API Key",
+      Placeholder: "Azure OpenAI API Key",
     },
     Usage: {
       Title: "Kontostand",

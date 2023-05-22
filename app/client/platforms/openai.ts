@@ -6,13 +6,22 @@ import Locale from "../../locales";
 import {
   EventStreamContentType,
   fetchEventSource,
-} from "@fortaine/fetch-event-source";
+} from "@microsoft/fetch-event-source";
 import { prettyObject } from "@/app/utils/format";
 
 export class ChatGPTApi implements LLMApi {
-  public ChatPath = "v1/chat/completions";
+  // public ChatPath = "v1/chat/completions";
   public UsagePath = "dashboard/billing/usage";
   public SubsPath = "dashboard/billing/subscription";
+
+  public get ChatPath() {
+    const OPENAI_REQUEST_PATH = "v1/chat/completions";
+    const { enableAOAI, azureDeployName } = useAccessStore.getState();
+    if (!enableAOAI) return OPENAI_REQUEST_PATH;
+
+    const AZURE_REQUEST_PATH = `openai/deployments/${azureDeployName}/chat/completions?api-version=2023-03-15-preview`;
+    return AZURE_REQUEST_PATH;
+  }
 
   path(path: string): string {
     let openaiUrl = useAccessStore.getState().openaiUrl;
@@ -71,13 +80,9 @@ export class ChatGPTApi implements LLMApi {
 
       if (shouldStream) {
         let responseText = "";
-        let finished = false;
 
         const finish = () => {
-          if (!finished) {
-            options.onFinish(responseText);
-            finished = true;
-          }
+          options.onFinish(responseText);
         };
 
         controller.signal.onabort = finish;
@@ -86,46 +91,30 @@ export class ChatGPTApi implements LLMApi {
           ...chatPayload,
           async onopen(res) {
             clearTimeout(requestTimeoutId);
-            const contentType = res.headers.get("content-type");
-            console.log(
-              "[OpenAI] request response content type: ",
-              contentType,
-            );
-
-            if (contentType?.startsWith("text/plain")) {
-              responseText = await res.clone().text();
+            if (
+              res.ok &&
+              res.headers.get("content-type") !== EventStreamContentType
+            ) {
+              responseText += await res.clone().json();
               return finish();
             }
-
-            if (
-              !res.ok ||
-              !res.headers
-                .get("content-type")
-                ?.startsWith(EventStreamContentType) ||
-              res.status !== 200
-            ) {
-              const responseTexts = [responseText];
-              let extraInfo = await res.clone().text();
+            if (res.status === 401) {
+              let extraInfo = { error: undefined };
               try {
-                const resJson = await res.clone().json();
-                extraInfo = prettyObject(resJson);
+                extraInfo = await res.clone().json();
               } catch {}
 
-              if (res.status === 401) {
-                responseTexts.push(Locale.Error.Unauthorized);
-              }
+              responseText += "\n\n" + Locale.Error.Unauthorized;
 
-              if (extraInfo) {
-                responseTexts.push(extraInfo);
+              if (extraInfo.error) {
+                responseText += "\n\n" + prettyObject(extraInfo);
               }
-
-              responseText = responseTexts.join("\n\n");
 
               return finish();
             }
           },
           onmessage(msg) {
-            if (msg.data === "[DONE]" || finished) {
+            if (msg.data === "[DONE]") {
               return finish();
             }
             const text = msg.data;
@@ -145,7 +134,6 @@ export class ChatGPTApi implements LLMApi {
           },
           onerror(e) {
             options.onError?.(e);
-            throw e;
           },
           openWhenHidden: true,
         });
@@ -190,12 +178,8 @@ export class ChatGPTApi implements LLMApi {
       }),
     ]);
 
-    if (used.status === 401) {
+    if (!used.ok || !subs.ok || used.status === 401) {
       throw new Error(Locale.Error.Unauthorized);
-    }
-
-    if (!used.ok || !subs.ok) {
-      throw new Error("Failed to query usage from openai");
     }
 
     const response = (await used.json()) as {

@@ -71,6 +71,19 @@ const it: LocaleType = {
     Lang: {
       Name: "Language", // ATTENTION: if you wanna add a new translation, please do not translate this value, leave it as `Language`
       All: "Tutte le lingue",
+      Options: {
+        cn: "简体中文",
+        en: "English",
+        tw: "繁體中文",
+        es: "Español",
+        it: "Italiano",
+        tr: "Türkçe",
+        jp: "日本語",
+        de: "Deutsch",
+        vi: "Tiếng Việt",
+        ru: "Русский",
+        cs: "Čeština",
+      },
     },
     Avatar: "Avatar",
     FontSize: {
@@ -128,6 +141,21 @@ const it: LocaleType = {
       SubTitle:
         "Utilizzare la chiave per ignorare il limite del codice di accesso",
       Placeholder: "OpenAI API Key",
+    },
+    EnableAOAI: "Usa Azure OpenAI",
+    AzureDomainName: {
+      Title: "Sottodominio personalizzato di Azure OpenAI",
+      Placeholder: "Sottodominio personalizzato",
+    },
+    AzureDeploymentName: {
+      Title: "Nome dell'istanza di distribuzione di Azure OpenAI",
+      SubTitle:
+        "Dopo aver abilitato Azure OpenAI, immettere il nome dell'istanza distribuita",
+      Placeholder: "Nome istanza",
+    },
+    AOAIToken: {
+      Title: "Azure OpenAI API Key",
+      Placeholder: "Azure OpenAI API Key",
     },
     Usage: {
       Title: "Bilancio Account",
