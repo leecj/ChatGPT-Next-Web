@@ -498,7 +498,7 @@ export function Settings() {
             <></>
           )}
 
-          <ListItem title={Locale.Settings.EnableAOAI}>
+          {/* <ListItem title={Locale.Settings.EnableAOAI}>
             <input
               type="checkbox"
               checked={accessStore.enableAOAI}
@@ -588,7 +588,7 @@ export function Settings() {
                 )}
               </ListItem>
             </>
-          ) : null}
+          ) : null} */}
         </List>
 
         <List>
