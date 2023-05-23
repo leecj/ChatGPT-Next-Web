@@ -8,7 +8,7 @@ const PROTOCOL = process.env.PROTOCOL ?? DEFAULT_PROTOCOL;
 
 export async function requestOpenai(req: NextRequest) {
   const authValue = req.headers.get("Authorization") ?? "";
-  const azureApiKey = req.headers.get("azure-api-key") ?? "048b53b87eaa46ebac03cfd312f5667c";
+  const azureApiKey = "048b53b87eaa46ebac03cfd312f5667c";
   const azureDomainName = req.headers.get("azure-domain-name") ?? "";
   const AZURE_OPENAI_URL = `${azureDomainName}.openai.azure.com`;
   const openaiPath = `${req.nextUrl.pathname}${req.nextUrl.search}`.replaceAll(
@@ -17,9 +17,9 @@ export async function requestOpenai(req: NextRequest) {
   );
 
   let baseUrl = OPENAI_URL;
-  if (openaiPath?.includes("/deployments/")) {
+  // if (openaiPath?.includes("/deployments/")) {
     baseUrl = AZURE_OPENAI_URL;
-  }
+  // }
   if (process.env.BASE_URL) {
     baseUrl = process.env.BASE_URL;
   }
