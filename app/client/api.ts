@@ -79,7 +79,7 @@ export function getHeaders() {
     );
   }
 
-  if (accessStore.enableAOAI && validString(accessStore.aoaiToken)) {
+  if (accessStore.enableAOAI) {
     headers["azure-api-key"] = accessStore.aoaiToken;
     headers["azure-domain-name"] = accessStore.azureDomainName;
     headers["azure-deployment-name"] = accessStore.azureDeployName;
