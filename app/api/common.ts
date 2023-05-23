@@ -1,4 +1,6 @@
 import { NextRequest } from "next/server";
+import { getServerSideConfig } from "../config/server";
+const serverConfig = getServerSideConfig();
 
 const OPENAI_URL = "api.openai.com";
 const DEFAULT_PROTOCOL = "https";
@@ -6,7 +8,7 @@ const PROTOCOL = process.env.PROTOCOL ?? DEFAULT_PROTOCOL;
 
 export async function requestOpenai(req: NextRequest) {
   const authValue = req.headers.get("Authorization") ?? "";
-  const azureApiKey = req.headers.get("azure-api-key") ?? "";
+  const azureApiKey = req.headers.get("azure-api-key") ?? serverConfig.apiKey;
   const azureDomainName = req.headers.get("azure-domain-name") ?? "";
   const AZURE_OPENAI_URL = `${azureDomainName}.openai.azure.com`;
   const openaiPath = `${req.nextUrl.pathname}${req.nextUrl.search}`.replaceAll(
