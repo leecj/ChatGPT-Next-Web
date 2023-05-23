@@ -38,7 +38,7 @@ export const useAccessStore = create<AccessControlStore>()(
       accessCode: "",
 
       enableAOAI: true as boolean,
-      azureDomainName: "newbee",
+      azureDomainName: "",
       azureDeployName: "chatgpt35",
       aoaiToken: "",
 
@@ -76,6 +76,7 @@ export const useAccessStore = create<AccessControlStore>()(
 
         // has token or has code or disabled access control
         if (get().enableAOAI) {
+          return true;
           return (
             !!get().azureDomainName &&
             !!get().azureDeployName &&
