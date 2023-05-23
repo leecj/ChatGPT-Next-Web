@@ -37,9 +37,9 @@ export const useAccessStore = create<AccessControlStore>()(
       token: "",
       accessCode: "",
 
-      enableAOAI: false as boolean,
-      azureDomainName: "",
-      azureDeployName: "",
+      enableAOAI: true as boolean,
+      azureDomainName: "newbee",
+      azureDeployName: "chatgpt35",
       aoaiToken: "",
 
       needCode: true,
